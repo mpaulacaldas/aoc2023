@@ -15,5 +15,6 @@ test_that("first example works", {
     read_lines()
 
   expect_equal(find_adj_numbers(example), 4361)
+  expect_equal(find_gear_ratio(example), 467835)
 
 })

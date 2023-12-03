@@ -1,10 +1,10 @@
-find_adj_numbers <- function(input) {
+find_adj <- function(input, pattern = "[^A-Za-z0-9\\.]") {
 
   loc_lines <- tibble(line = input) |>
     mutate(row = row_number())
 
   loc_special <- input |>
-    str_locate_all("[^A-Za-z0-9\\.]") |>
+    str_locate_all(pattern) |>
     map_dfr(as_tibble, .id = "row") |>
     mutate(row = as.integer(row)) |>
     left_join(loc_lines, by = "row") |>
@@ -35,10 +35,28 @@ find_adj_numbers <- function(input) {
       suffix = c("_sp", "_nb")
     )
 
-  loc_filtered |>
+  loc_filtered
+}
+
+find_adj_numbers <- function(input) {
+  input |>
+    find_adj() |>
     pull(number) |>
     sum()
 }
 
 read_lines("input/day03.txt") |>
   find_adj_numbers()
+
+find_gear_ratio <- function(input) {
+  input |>
+    find_adj(pattern = "\\*") |>
+    group_by(row_sp, start_sp, end_sp) |>
+    filter(n() == 2) |>
+    summarise(ratio = reduce(number, `*`), .groups = "drop") |>
+    summarise(sum(ratio)) |>
+    pull()
+}
+
+read_lines("input/day03.txt") |>
+  find_gear_ratio()
