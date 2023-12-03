@@ -35,7 +35,10 @@ find_adj_numbers <- function(input) {
       suffix = c("_sp", "_nb")
     )
 
-  answer <- loc_filtered |>
+  loc_filtered |>
     pull(number) |>
     sum()
 }
+
+read_lines("input/day03.txt") |>
+  find_adj_numbers()
