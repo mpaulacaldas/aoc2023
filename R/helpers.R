@@ -1,3 +1,6 @@
+# have the tidyverse available interactively
+library(tidyverse)
+
 day <- function() {
   d <- format(Sys.Date(), "%d")
   sprintf("day%s", d)

@@ -1,7 +1,3 @@
-library(tidyverse)
-
-input <- read_file("input/day02.txt")
-
 parse_games <- function(input) {
   input |>
     str_remove_all("Game ") |>
@@ -42,6 +38,3 @@ sum_power_games <- function(input) {
     summarise(sum(power)) |>
     pull()
 }
-
-sum_id_valid_games(input)
-sum_power_games(input)

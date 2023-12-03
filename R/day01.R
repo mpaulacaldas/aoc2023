@@ -1,7 +1,3 @@
-library(tidyverse)
-
-input <- read_lines("input/day01.txt")
-
 # Part 1 ------------------------------------------------------------------
 
 add_digits <- function(input) {
@@ -11,8 +7,6 @@ add_digits <- function(input) {
     as.numeric() |>
     sum()
 }
-
-add_digits(input)
 
 
 # Part 2 ------------------------------------------------------------------
@@ -49,5 +43,3 @@ add_digits2 <- function(input) {
     as.numeric() |>
     sum()
 }
-
-add_digits2(input)

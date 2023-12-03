@@ -6,8 +6,11 @@ test_that("first example works", {
     a1b2c3d4e5f
     treb7uchet"
   ) |> readr::read_lines()
-
   expect_equal(add_digits(example1), 142)
+
+  input <- read_lines("input/day01.txt")
+  expect_equal(add_digits(input), 54338)
+
 })
 
 test_that("second example works", {
@@ -21,6 +24,8 @@ test_that("second example works", {
     7pqrstsixteen"
     ) |>
     read_lines()
-
   expect_equal(add_digits2(example2), 281)
+
+  input <- read_lines("input/day01.txt")
+  expect_equal(add_digits2(input), 53389)
 })

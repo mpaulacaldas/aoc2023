@@ -1,4 +1,4 @@
-test_that("Both examples work", {
+test_that("Day 02", {
 
   example <- glue::glue(
     "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -9,5 +9,10 @@ test_that("Both examples work", {
 
   expect_equal(sum_id_valid_games(example), 8)
   expect_equal(sum_power_games(example), 2286)
+
+  input <- read_file("input/day02.txt")
+
+  expect_equal(sum_id_valid_games(input), 2176)
+  expect_equal(sum_power_games(input), 63700)
 })
 
