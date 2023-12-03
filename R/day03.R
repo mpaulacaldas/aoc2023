@@ -45,9 +45,6 @@ find_adj_numbers <- function(input) {
     sum()
 }
 
-read_lines("input/day03.txt") |>
-  find_adj_numbers()
-
 find_gear_ratio <- function(input) {
   input |>
     find_adj(pattern = "\\*") |>
@@ -57,6 +54,3 @@ find_gear_ratio <- function(input) {
     summarise(sum(ratio)) |>
     pull()
 }
-
-read_lines("input/day03.txt") |>
-  find_gear_ratio()
