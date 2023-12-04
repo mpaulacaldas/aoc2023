@@ -24,4 +24,6 @@ test_that("multiplication works", {
     Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
   )
 
+  expect_equal(count_copies_scratchcards(example2), 30)
+  expect_equal(count_copies_scratchcards(input), 6284877)
 })
