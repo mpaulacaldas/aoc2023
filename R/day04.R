@@ -1,4 +1,4 @@
-add_points_scratchcards <- function(input) {
+parse_scratchcards <- function(input) {
   input |>
     str_remove_all("Card\\s+\\d+\\: ") |>
     read_delim(
@@ -12,7 +12,12 @@ add_points_scratchcards <- function(input) {
     )) |>
     rowwise() |>
     mutate(n = sum(mine %in% winning)) |>
-    ungroup() |>
+    ungroup()
+}
+
+add_points_scratchcards <- function(input) {
+  input |>
+    parse_scratchcards() |>
     mutate(points = ifelse(n > 0, 2 ^ (n - 1), 0)) |>
     summarise(sum(points)) |>
     pull()
