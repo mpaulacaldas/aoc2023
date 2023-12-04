@@ -1,6 +1,6 @@
 add_points_scratchcards <- function(input) {
   input |>
-    str_remove_all("Card \\d+: ") |>
+    str_remove_all("Card\\s+\\d+\\: ") |>
     read_delim(
       col_names = c("winning", "mine"),
       col_types = cols(.default = col_character()),
