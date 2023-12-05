@@ -39,7 +39,8 @@ test_that("multiplication works", {
   expect_equal(get_lowest_location("input/day05.txt"), 323142486)
 
   expect_equal(length(parse_seeds(example, expand = TRUE)), 27)
-
   expect_equal(get_lowest_location(example, expand = TRUE), 46)
 
+  # fails, because my solution exhausts the memory
+  expect_no_error(parse_seeds("input/day05.txt", expand = TRUE))
 })
