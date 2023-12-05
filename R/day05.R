@@ -1,9 +1,17 @@
-parse_seeds <- function(input) {
-  input |>
+parse_seeds <- function(input, expand = FALSE) {
+  seeds <- input |>
     readr::read_lines(n_max = 1) |>
     str_extract_all("\\d+") |>
     unlist() |>
     as.numeric()
+  if (expand) {
+    start <- seeds[seq_along(seeds) %% 2 == 1]
+    range <- seeds[seq_along(seeds) %% 2 == 0]
+    seeds <- map2(start, range, \(x, y) seq(x, x + y - 1)) |>
+      unlist() |>
+      unique()
+  }
+  seeds
 }
 
 parse_almanac <- function(input) {
@@ -46,9 +54,9 @@ map_seeds_cumulatively <- function(seeds, params) {
   return(seeds)
 }
 
-get_lowest_location <- function(input) {
+get_lowest_location <- function(input, expand = FALSE) {
   steps <- parse_almanac(input)
-  seeds <- parse_seeds(input)
+  seeds <- parse_seeds(input, expand = expand)
   locations <- reduce(
     steps,
     map_seeds_cumulatively,
