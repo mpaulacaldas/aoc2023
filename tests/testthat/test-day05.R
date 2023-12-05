@@ -36,5 +36,6 @@ test_that("multiplication works", {
   )
 
   expect_equal(get_lowest_location(example), 35)
+  expect_equal(get_lowest_location("input/day05.txt"), 323142486)
 
 })
