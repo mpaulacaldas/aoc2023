@@ -9,7 +9,7 @@ ways_to_win <- function(input, fix_kerning = FALSE) {
   dist <- info[[2]]
 
   time |>
-    map(\(x) (1:(x - 1)) * ((x-1):1)) |>
+    map(\(x) as.numeric(1:(x-1)) * as.numeric((x-1):1)) |>
     map2(dist, \(x, y) sum(x > y)) |>
     reduce(`*`)
 }
