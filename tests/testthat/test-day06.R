@@ -7,4 +7,6 @@ test_that("multiplication works", {
   expect_equal(ways_to_win(example), 288)
   expect_equal(ways_to_win(read_file("input/day06.txt")), 281600)
 
+  expect_equal(ways_to_win(example, fix_kerning = TRUE), 71503)
+
 })
